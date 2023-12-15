@@ -7,7 +7,7 @@ import {NgForm} from "@angular/forms";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  @ViewChild('f') signup: NgForm  //!!passing "f" as string
+  @ViewChild('f') signupF: NgForm  //singup -is fetched directly from template NGForm with @ViewChild // is !!passing "f" as string
 
   defaultQ = "teacher";
   answer: "";
@@ -36,7 +36,7 @@ export class AppComponent {
       })*/
 
     //set part of the form!!!
-    this.signup.form.patchValue({
+    this.signupF.form.patchValue({
       userData: {
         username: suggestedName,
       },
@@ -49,10 +49,13 @@ export class AppComponent {
    }*/
 
   onSubmit() {
-    this.user.username = this.signup.value.userData.username; //после равно - из HTML!!!
-    this.user.mail = this.signup.value.userData.email;
-    this.user.secretQuestion = this.signup.value.secret;
-    this.user.answer = this.signup.value.questionAnswer;
-    this.user.gender = this.signup.value.gender;
+    this.submited= true;
+    this.user.username = this.signupF.value.userData.username; //после равно - из HTML!!!
+    this.user.mail = this.signupF.value.userData.email;
+    this.user.secretQuestion = this.signupF.value.secret;
+    this.user.answer = this.signupF.value.questionAnswer;
+    this.user.gender = this.signupF.value.gender;
+
+    this.signupF.reset()
   }
 }
