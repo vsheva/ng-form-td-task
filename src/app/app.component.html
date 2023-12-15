@@ -63,8 +63,8 @@
               type="radio"
               name="gender"
               ngModel
-              [value]=gender>
-            required
+              [value]=gender
+              required>
             {{gender}}
           </label>
 
@@ -75,6 +75,17 @@
           [disabled]="!f.valid">Submit
         </button>
       </form>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-xs-12">
+      <h3>Your data</h3>
+      <p>Username: {{user.username}} </p>
+      <p>Mail: {{user.mail}}</p>
+      <p>Secret question: {{user.secretQuestion}} </p>
+      <p>Answer: {{user.answer}}</p>
+      <p>Gender: {{user.gender}}</p>
     </div>
   </div>
 </div>

@@ -11,21 +11,31 @@ export class AppComponent {
 
   defaultQ = "teacher";
   answer: "";
-  genders = ["Male", "Female"]
+  genders = ["Male", "Female"];
+  user = {
+    username: '',
+    mail: "",
+    secretQuestion: "",
+    answer: "",
+    gender: "",
+  };
+  submited = false;
 
   suggestUserName() {
     const suggestedName = 'Superuser';
 
-    /* this.signup.setValue({
-       userData:{
-         username:suggestedName,
-         email:''
-       },
-       secret:"pet",
-       questionAnswer:"",
-       gender:'male'
-     })*/
+    //set whole form!!!
+    /*  this.signup.setValue({
+        userData:{
+          username:suggestedName,
+          email:''
+        },
+        secret:"pet",
+        questionAnswer:"",
+        gender:'male'
+      })*/
 
+    //set part of the form!!!
     this.signup.form.patchValue({
       userData: {
         username: suggestedName,
@@ -39,7 +49,10 @@ export class AppComponent {
    }*/
 
   onSubmit() {
-    console.log(this.signup)
+    this.user.username = this.signup.value.userData.username; //после равно - из HTML!!!
+    this.user.mail = this.signup.value.userData.email;
+    this.user.secretQuestion = this.signup.value.secret;
+    this.user.answer = this.signup.value.questionAnswer;
+    this.user.gender = this.signup.value.gender;
   }
-
 }
